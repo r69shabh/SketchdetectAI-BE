@@ -12,13 +12,12 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 allowed_origins = [
-    "https://sketchdetect-ai-fe-tcdj.vercel.app",
-    "https://sketchdetect-ai-fe-tcdj.vercel.app/home"
+    "https://sketchdetect-ai-fe-tcdj.vercel.app"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=['*', allowed_origins],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
