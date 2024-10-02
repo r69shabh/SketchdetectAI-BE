@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from apps.calculator.route import router as calculator_router
-from constants import SERVER_URL, PORT, ENV  # Updated import path
+from constants import SERVER_URL, PORT, ENV
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -12,7 +12,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 allowed_origins = [
-    "https://sketchdetect-ai-fe-tcdj.vercel.app"
+    "https://sketchdetect-ai-fe-tcdj.vercel.app",
+    "http://localhost:3000",  # Add this for local development
 ]
 
 app.add_middleware(
